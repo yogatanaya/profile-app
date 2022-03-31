@@ -18,7 +18,7 @@
 - [x] Update existing experience
 - [x] Delete existing experience
 
-### Installation to test
+### How To Test
 ---
 
 1. Clone this repository
