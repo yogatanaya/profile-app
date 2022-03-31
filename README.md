@@ -28,9 +28,9 @@
 ---
 Feel free to contact me if you had trouble while installation :).
 
-Whatsapp: https://wa.me?6282237969647
-Email: tanayayoga@gmail.com
-Linkedin: linkedin.com/in/yogatanaya
-Instagram: instagram.com/yogatanaya
+- Whatsapp: https://wa.me?6282237969647
+- Email: tanayayoga@gmail.com
+- Linkedin: linkedin.com/in/yogatanaya
+- Instagram: instagram.com/yogatanaya
 
 Cheers, 👋
