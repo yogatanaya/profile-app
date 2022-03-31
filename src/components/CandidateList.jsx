@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 import { db } from '../Firebase';
 import ExperienceList from './ExperienceList';
 
@@ -15,10 +16,17 @@ import { Image } from '@fluentui/react/lib/Image';
 import { Text } from '@fluentui/react/lib/Text';
 import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
 import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
+import AddExperience from './AddExperience';
 
 export default function CandidateList() {
   
   const [candidates, setCandidates] = useState([]);
+  let navigate = useNavigate();
+
+  const routeChange = () => {
+    let path = `/add-experiences`;
+    navigate(path);
+  }
 
   useEffect(() => {
     let candidatesRef = collection(db, "candidates");
@@ -30,7 +38,11 @@ export default function CandidateList() {
       }))
       setCandidates(candidates);
     })
-  }, [])
+  }, []);
+
+  const handleEdit = (paramId, paramImgUrl) => {
+    navigate(`/edit-candidate/${paramId}`, {id: paramId, image_url: paramImgUrl});
+  }
 
   return (
     <div>
@@ -46,23 +58,27 @@ export default function CandidateList() {
 
                   <DocumentCardDetails>
                     <Image src={image_url} alt={name} 
-                    style={{ borderRadius: '50%' }}
+                    style={{ borderRadius: '30px', width: '80%' }}
                     />
                     
-                    <PrimaryButton text="Edit Personal Data"/>
 
                     <Separator>Personal Information</Separator>
+                    <PrimaryButton text="Edit Personal Data" onClick={() => handleEdit(id, image_url)}/>
+
                     <Label disabled>Name</Label>
                     <Text variant='medium'>
-                    {name}
+                    {name ?? "-"}
                     </Text>
                     <Label disabled>Age</Label>
                     <Text variant='medium'>
-                    {age}
+                    {age ?? "-"}
                     </Text>
+
                     <Separator>Work Experiences</Separator>
-                    <PrimaryButton text="Add Skills Experiences"/>
+                    <PrimaryButton text="Add Skills Experiences+" onClick={routeChange}/>
+
                     <ExperienceList/>
+
                   </DocumentCardDetails>
                 
                 </DocumentCard>
