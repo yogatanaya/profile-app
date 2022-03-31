@@ -25,6 +25,9 @@
 2. run on terminal inside the project directory `npm install`
 3. run `npm start`
 
+### Live Version
+link: https://editable-profile.netlify.app/
+
 ---
 Feel free to contact me if you had trouble while installation :).
 
